@@ -10,7 +10,7 @@ next:
 
 # Pkg
 
-Pkg is a resource that allows you to manage packages on a system.
+The `builtin.pkg` is a resource that allows you to manage packages on a system.
 
 ## Specific version
 

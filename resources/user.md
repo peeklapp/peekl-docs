@@ -10,7 +10,7 @@ next:
 
 # User
 
-The `user` resource allow to manage everything related to a user, from the shell that it should have, to the creation and deletion of the user, and groups membership.
+The `builtin.user` resource allow to manage everything related to a user, from the shell that it should have, to the creation and deletion of the user, and groups membership.
 
 ## Resource parameters
 

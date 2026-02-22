@@ -10,7 +10,7 @@ next:
 
 # File
 
-The file resource allows you to create or delete a file, and to set content inside of a file.
+The `builtin.file` resource allows you to create or delete a file, and to set content inside of a file.
 
 ## Resource parameters
 

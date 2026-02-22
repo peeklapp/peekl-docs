@@ -25,7 +25,55 @@ Here is the full list of resources that are baked into Peekl.
 | `builtin.template` | Allows you to define templates that are then rendered on host using variables that you define, or facts. |
 | `builtin.pkg` | Allows you to install or remove packages, as well as enforcing version of packages. |
 | `builtin.systemd_service` | Allows you to manage a systemd service, such as restarting it, making sure that it is started or stopped. |
+| `buitlin.debug` | Allows you to write debug messages to logs when running the agent. |
+| `builtin.command` | Allows you to shell commands on the server. |
 
 ## Can I create custom resources ?
 
 For now this functionality does not exist. However in the future, we plan on adding a plugin mechanism that would allow you to do just that.
+
+## Common fields for resources
+
+All resources share a lot of common fields. We'll go over them together.
+
+### title
+
+The title field allows you to uniquely name a resource. There is no rule about the formatting, but using snake case is nice.
+
+### type
+
+The type determine what kind of resource you're declaring. Accepted values are currently only `builtin.*`.
+
+### present
+
+Whether the resource should be present or no. For example for a file, if set to `true` then the file will actively be created and at every run the agent would make that it exist. If set to `false` then it would delete the file. 
+
+Default is always `true`.
+
+### data
+
+The data of the resource. The content of this field depends of the type of resource. Refer to the documentation of each resource type to learn more.
+
+### register
+
+A variable name to register the result to. Result can either be `created`, `deleted`, `updated` or `unchanged`. It's useful to perform certain action on conditions, paired with the `when` field.
+
+### when
+
+The when field allow to evaluate resources only if required. For example you could say that you'd want this resource to run only for Debian 12, or if you need to reload nginx after a configuration change.
+
+```yaml
+- title: "configure_nginx"
+  type: "builtin.template"
+  data:
+    name: "nginx.conf"
+    path: "/etc/nginx/nginx.conf"
+  register: "configure_nginx"
+
+- title: "reload_nginx"
+  type: "builtin.systemd_service"
+  data:
+    name: "nginx.service"
+    state: "reloaded"
+  when: "configure_nginx == updated"
+```

@@ -1,7 +1,15 @@
-# Getting started
+---
+next:
+  text: What is Peekl
+  link: /getting-started/what-is-peekl
+---
+![Peekl Logo](media/peekl_logo.jpg)
 
-Welcome to the official documentation of Peekl! 
+# Welcome!
 
-For now it might seem a little bit empty around here, but with time it will only get better. 
+Welcome to the official documentation for Peekl! Here you'll find everything you need to know about Peekl: all the tips and tricks, how does it work under the hood, and more!
 
-You can actually help us in making Peekl better! Feel free to contribute to the project, whether it is to add new functionality to the project, or to simply improve the documentation. Your help will always be welcome.
+Here's a few links that might help you :
+
+- [Setting up the server](/getting-started/setting-up-the-server)
+- [Setting up the agent](/getting-started/setting-up-the-agent)

@@ -10,7 +10,7 @@ next:
 
 # Directory
 
-The directory resource allows you to manage a directory, either creating or deleting it, and setting permissions.
+The `builtin.directory` resource allows you to manage a directory, either creating or deleting it, and setting permissions.
 
 ## Resource parameters
 

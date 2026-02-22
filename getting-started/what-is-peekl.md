@@ -1,3 +1,13 @@
+---
+prev:
+  text: Getting started
+  link: /
+
+next:
+  text: Setting up the server
+  link: /getting-started/setting-up-the-server
+---
+
 # What is Peekl
 
 Peekl is modern configuration management tool. It's similar to what you could achieve using Ansible, or Puppet for example. The main idea behind Peekl is to solve the issue that those previously mentionned solutions have, and combine the best of both worlds.

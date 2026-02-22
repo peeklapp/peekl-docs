@@ -5,12 +5,12 @@ prev:
 
 next:
   text: Node
-  link: inventory/node
+  link: resources/debug
 ---
 
 # Systemd Service
 
-The systemd service resource allows you to manage the state of a systemd service.
+The `builtin.systemd_service` resource allows you to manage the state of a systemd service.
 
 ## Resource parameters
 

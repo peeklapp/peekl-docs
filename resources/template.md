@@ -10,7 +10,7 @@ next:
 
 # Template
 
-The template directory allows you to create file on node with dynamic content defined by variables that you set, or using facts.
+The `builtin.template` resource allows you to create file on node with dynamic content defined by variables that you set, or using facts.
 
 ::: info
 Templates can only really be used within a role only, as this is the only place where we can define raw templates. This behavior might change in the future.

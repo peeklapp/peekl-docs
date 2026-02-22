@@ -10,7 +10,7 @@ next:
 
 # Group
 
-Group is a resource that allows you to either create or delete a group.
+The `builtin.group` is a resource that allows you to either create or delete a group.
 
 ::: info
 Membership of group is done through the resource of type `builtin.user` and not through the `builtin.group` type.
