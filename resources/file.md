@@ -20,7 +20,8 @@ The `builtin.file` resource allows you to create or delete a file, and to set co
 | `owner` | Set owner of the file | `false` | `root` |
 | `group` | Set group of the file | `false` | `root` |
 | `mode` | Set mode of the file | `false` | `0755` |
-| `content` | Set content of the file | `false` | |
+| `content` | Content of the file to use. Cannot be used with the `source` parameter. | `false` | |
+| `source` | Name of the file to use from the role `files` folder. Cannot be used with the `content` parameter. | `false` | |
 
 ## Examples
 
