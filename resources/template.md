@@ -36,11 +36,12 @@ On top of variables that you can define in your roles, your inventory, and on di
 
 | Name | Description | Required | Default |
 | ---- | ---- | ---- | ---- |
-| `name` | The name of the template to use. It correspond to the name of the final in the `templates` folder, minus the `.tmpl` file extension.  | `true` | |
+| `source` | The file from the `templates` folder to use. Cannot be used if the `content` option is used. | `true` | |
 | `path` | Path at which to create the file based on the template | `true` | |
 | `owner` | Set owner of the file | `false` | `root` |
 | `group` | Set group of the file | `false` | `root` |
 | `mode` | Set permissions of the file | `false` | `0755` |
+| `content` | The content of the template. Cannot be used if the `source` option is used. | `true` | |
 | `variables` | A list of variables that you want to pass to the template on top of other pre-existing variables. | `false` | |
 
 ## Examples
@@ -52,8 +53,22 @@ Create file `/etc/my_app/config` based on the template called `config`
   type: "builtin.template"
   present: true
   data:
-    name: "config"
+    source: "config"
     path: "/etc/my_app/config"
+    variables:
+      hello: "world"
+```
+
+Create file dummy with a local content
+
+```yaml
+- title: "Create dummy file with content"
+  type: "builtin.template"
+  present: true
+  data:
+    path: "/root/dummy"
+    content: |
+      {{ .hello }}
     variables:
       hello: "world"
 ```
