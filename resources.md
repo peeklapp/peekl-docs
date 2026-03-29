@@ -75,5 +75,5 @@ The when field allow to evaluate resources only if required. For example you cou
   data:
     name: "nginx.service"
     state: "reloaded"
-  when: "configure_nginx == updated"
+  when: "configure_nginx == 'updated'"
 ```
