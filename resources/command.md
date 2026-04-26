@@ -4,8 +4,8 @@ prev:
   link: resources/debug
 
 next:
-  text: Node
-  link: inventory/node
+  text: Inventory
+  link: code-structure/inventory
 ---
 
 # Command

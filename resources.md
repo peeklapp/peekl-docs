@@ -24,6 +24,7 @@ Here is the full list of resources that are baked into Peekl.
 | `builtin.directory` | Allows you to create a folder, or to suppress a folder, alongside change the ownership and permissions. |
 | `builtin.template` | Allows you to define templates that are then rendered on host using variables that you define, or facts. |
 | `builtin.pkg` | Allows you to install or remove packages, as well as enforcing version of packages. |
+| `builtin.systemd_daemon` | Allows you to manage systemd daemon, such as reloading it when you add a `.service` unit file. |
 | `builtin.systemd_service` | Allows you to manage a systemd service, such as restarting it, making sure that it is started or stopped. |
 | `buitlin.debug` | Allows you to write debug messages to logs when running the agent. |
 | `builtin.command` | Allows you to shell commands on the server. |

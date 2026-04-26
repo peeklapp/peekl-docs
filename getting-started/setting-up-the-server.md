@@ -4,8 +4,8 @@ prev:
   link: /getting-started/what-is-peekl
 
 next:
-  text: Installing the agent
-  link: /getting-started/installing-the-agent
+  text: Setting up the agent
+  link: /getting-started/setting-up-the-agent
 ---
 
 # Setting up the server

@@ -4,8 +4,8 @@ prev:
   link: resources/template
 
 next:
-  text: Systemd Service
-  link: resources/systemd-service
+  text: Systemd Daemon
+  link: resources/systemd-daemon
 ---
 
 # Pkg

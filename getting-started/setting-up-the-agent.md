@@ -4,8 +4,8 @@ prev:
   link: /getting-started/setting-up-the-server
 
 next:
-  text: Enrolling the agent
-  link: /getting-started/enrolling-the-agent
+  text: Resources
+  link: /resources
 ---
 
 # Setting up the agent
