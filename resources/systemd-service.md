@@ -1,7 +1,7 @@
 ---
 prev:
-  text: Pkg
-  link: resources/pkg
+  text: Systemd Daemon
+  link: resources/systemd-daemon
 
 next:
   text: Node
