@@ -1,22 +1,18 @@
 ---
 prev:
-  text: User
-  link: resources/user
+  text: 'File'
+  link: '/resources/file'
 
 next:
-  text: File
-  link: resources/file
+  text: 'Pkg'
+  link: '/resources/pkg'
 ---
 
 # Group
 
 The `builtin.group` is a resource that allows you to either create or delete a group.
 
-::: info
-Membership of group is done through the resource of type `builtin.user` and not through the `builtin.group` type.
-:::
-
-## Resource parameters
+## Parameters
 
 | Name | Description | Required | Default |
 | ---- | ---- | ---- |---- |
@@ -30,7 +26,7 @@ Create a group named potato
 - title: "Create group potato"
   type: "builtin.group"
   present: true
-  data:
+  parameters:
     name: "potato"
 ```
 
@@ -40,6 +36,6 @@ Delete a group named potato
 - title: "Delete group potato"
   type: "builtin.group"
   present: false
-  data:
+  parameters:
     name: "potato"
 ```

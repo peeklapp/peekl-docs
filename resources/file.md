@@ -1,18 +1,18 @@
 ---
 prev:
-  text: Group
-  link: resources/group
+  text: 'Directory'
+  link: '/resources/directory'
 
 next:
-  text: Directory
-  link: resources/directory
+  text: 'Group'
+  link: '/resources/group'
 ---
 
 # File
 
 The `builtin.file` resource allows you to create or delete a file, and to set content inside of a file.
 
-## Resource parameters
+## Parameters
 
 | Name | Description | Required | Default |
 | ---- | ---- | ---- | ----|
@@ -31,7 +31,7 @@ Create a file at path `/tmp/hello_world` with content `Hello, world!`
 - title: "Create file /tmp/hello_world"
   type: "builtin.file"
   present: true
-  data:
+  parameters:
     path: "/tmp/hello_world"
     content: "Hello, world!"
 ```
@@ -42,6 +42,5 @@ Delete a file at path `/tmp/delete_me`
 - title: "Delete file /tmp/delete_me"
   type: "builtin.file"
   present: false
-  data:
+  parameters:
     path: "/tmp/delete_me"
-```

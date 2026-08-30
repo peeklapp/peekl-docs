@@ -1,18 +1,18 @@
 ---
 prev:
-  text: Systemd Daemon
-  link: resources/systemd-daemon
+  text: 'Systemd Daemon'
+  link: '/resources/systemd-daemon'
 
 next:
-  text: Node
-  link: resources/debug
+  text: 'User'
+  link: '/resources/user'
 ---
 
 # Systemd Service
 
 The `builtin.systemd_service` resource allows you to manage the state of a systemd service.
 
-## Resource parameters
+## Parameters
 
 | Name | Description | Required | Default |
 | ---- | ---- | ---- | ---- |
@@ -29,7 +29,7 @@ Start service `nginx`
 - title: "Start nginx.service"
   type: "builtin.systemd_service"
   present: true
-  data:
+  parameters:
     name: "nginx.service"
     state: "started"
 ```
@@ -40,7 +40,7 @@ Stop service `nginx`
 - title: "Stop nginx.service"
   type: "builtin.systemd_service"
   present: true
-  data:
+  parameters:
     name: "nginx.service"
     state: "stop"
 ```
@@ -52,7 +52,7 @@ Reload service `nginx`
 - title: "Reload nginx.service"
   type: "builtin.systemd_service"
   present: true
-  data:
+  parameters:
     name: "nginx.service"
     state: "reload"
 ```

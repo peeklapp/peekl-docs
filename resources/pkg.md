@@ -1,11 +1,11 @@
 ---
 prev:
-  text: Template
-  link: resources/template
+  text: 'Group'
+  link: '/resources/group'
 
 next:
-  text: Systemd Daemon
-  link: resources/systemd-daemon
+  text: 'Systemd Daemon'
+  link: '/resources/systemd-daemon'
 ---
 
 # Pkg
@@ -16,7 +16,7 @@ The `builtin.pkg` is a resource that allows you to manage packages on a system.
 
 In the `names` field, if you want to specify a specific version for a package, you can do so with the following syntax : `nginx=1.23.3`. Where `1.23.3` is the version you want.
 
-## Resources parameters
+## Parameters
 
 | Name | Description | Required | Default |
 | ---- | ---- | ---- | ---- |
@@ -31,7 +31,7 @@ Install package nginx
 - title: "Install nginx"
   type: "builtin.pkg"
   present: true
-  data:
+  parameters:
     names: ["nginx"]
 ```
 
@@ -42,7 +42,7 @@ Install version `1.23.3` of nginx
 - title: "Install nginx"
   type: "builtin.pkg"
   present: true
-  data:
+  parameters:
     names:
       - "nginx=1.23.3"
 ```
@@ -53,6 +53,6 @@ Remove package nginx
 - title: "Remove nginx"
   type: "builtin.pkg"
   present: false
-  data:
+  parameters:
     names: ["nginx"]
 ```
