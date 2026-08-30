@@ -4,59 +4,87 @@ prev:
   link: /getting-started/setting-up-the-server
 
 next:
-  text: Resources
-  link: /resources
+  text: Setting up the syncing tool
+  link: /getting-started/setting-up-the-syncing-tool
 ---
 
 # Setting up the agent
 
-## Installing using packages
+## Setting appropriate DNS entry
 
-By default the agent will try to contact the Peekl server using https://peekl:9040 To work with this, you have two solutions :
+If you didn't make the choice of using a public DNS addresses when setting up the server, you will end-up having to add new DNS entry that points to the Peekl server. 
 
-Either make use of the peekl DNS name by adding it to the `/etc/hosts` file, using the command `echo '192.168.121.10 peekl' >> /etc/hosts` (update the IP accordingly to your case).
-
-Or create a configuration file at path `/etc/peekl/config/agent.yml` and add the following content to it (again, adapt the IP address to your case).
-
-```yaml
-server:
-  host: 192.168.121.10
-  port: 9040
-```
-
-Once this is done, you can proceed by just installing the agent using the Debian packages
+You can do so with the following command, but make sure to adapt the IP address to reflect the one you're using.
 
 ```bash
-export PEEKL_VERSION=0.2.0
-export PEEKL_ARCH=amd64
-wget https://github.com/peeklapp/peekl/releases/download/${PEEKL_VERSION}/peekl-agent_${PEEKL_VERSION}_linux_${PEEKL_ARCH}.deb
-apt install ./peekl-agent_${PEEKL_VERSION}_linux_${PEEKL_ARCH}.deb
+echo "192.168.121.1 peekl" >> /etc/hosts
 ```
 
-The agent should be up and running at this point.
+## Install from packages
 
-```bash
-systemctl status peekl-agent.service
+From Github you will be able to find packages available for both Debian and Fedora flavor operating systems. They are all available for both AMD64 and ARM architecture.
+
+::: code-group
+```bash [Debian]
+# Export version of Peekl to install
+export PEEKL_VERSION="0.12.0"
+
+# Get checksum
+wget -O /tmp/peekl_checksums.txt https://github.com/peeklapp/peekl/releases/download/${PEEKL_VERSION}/checksums.txt
+
+# Download .DEB package
+wget -O peekl-agent_${PEEKL_VERSION}_linux_amd64.deb https://github.com/peeklapp/peekl/releases/download/${PEEKL_VERSION}/peekl-agent_${PEEKL_VERSION}_linux_amd64.deb
+
+# Validate checksum
+sha256sum -c /tmp/peekl_checksums.txt --ignore-missing
+
+# Install package
+apt install ./peekl-agent_${PEEKL_VERSION}_linux_amd64.deb
 ```
 
-## Signing the certificate on the server
+```bash [Fedora]
+# Export version of Peekl to install
+export PEEKL_VERSION="0.12.0"
 
-Now that the agent is running, if everything went well, it should have sent it's certificate to be signed to the server.
+# Get checksum
+wget -O /tmp/peekl_checksums.txt https://github.com/peeklapp/peekl/releases/download/${PEEKL_VERSION}/checksums.txt
 
-On the server you can go ahead and list the pending certificates.
+# Download .RPM package
+wget -O peekl-agent_${PEEKL_VERSION}_linux_amd64.rpm https://github.com/peeklapp/peekl/releases/download/${PEEKL_VERSION}/peekl-agent_${PEEKL_VERSION}_linux_amd64.rpm
+
+# Validate checksum
+sha256sum -c /tmp/peekl_checksums.txt --ignore-missing
+
+# Install package
+apt install ./peekl-agent_${PEEKL_VERSION}_linux_amd64.rpm
+```
+:::
+
+## Enrolling the agent
+
+Agent enrollment is done in two step : 
+- Generating an enrollment token on the server-side;
+- Using this enrollment token with the agent.
+
+First on the server you'll need to run the following command. The IP you have to give is the IP which the agent is going to use to communicate with the server.
 
 ```bash
-peekl-server ca list pending
+peekl-server enroll create --ip 192.168.121.2
 ```
 
-And then simply sign the certificate using the name based on the previous command result.
+You will then have to copy the generated token, which you will then use on the agetn with the following command.
 
 ```bash
-peekl-server ca sign --certname name_of_the_node
+peekl-agent enroll 7d7e9965-db33-49a2-9b4e-39aa05303693
 ```
 
-Then you can force the agent to download certificate by manually running it.
+After that the agent will be ready to be used.
+
+## Enable daemon mode
+
+If you want the agent to run in daemon mode, you can enable the systemd unit that has been installed alongside the package.
 
 ```bash
-peekl-agent run
+systemctl enable peekl-agent.service
+systemctl start peekl-agent.service
 ```

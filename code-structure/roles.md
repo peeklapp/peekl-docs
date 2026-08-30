@@ -1,14 +1,18 @@
 ---
 prev:
-  text: Variables
-  link: /code-structure/variables
+  text: 'Variables'
+  link: '/code-structure/variables'
+
+next:
+  text: 'peekl-server'
+  link: '/references/peekl-server'
 ---
 
 # Roles
 
 In the context of Peekl, a roles can be described as a set of resources, variables, and templates, that you most likely want to reuse. For example you can use a roles to install and configure nginx.
 
-Declaring a role is a simple as creating a folder with the role name inside of the `roles` folder. And in this folder a file `main.yml` should exist. Here's an example of what it would look like for a role called `nginx`. And
+Declaring a role is a simple as creating a folder with the role name inside of the `roles` folder. And in this folder a file                                                                 `main.yml` should exist. Here's an example of what it would look like for a role called `nginx`. And
 
 ```bash
 /etc/peekl/code
@@ -34,7 +38,7 @@ Here's an example of what a complete `main.yml` file would look like.
 resources:
   - title: "Install Nginx"
     type: "builtin.pkg"
-    data:
+    parameters:
       names: ["nginx"]
 
 includes:
@@ -46,14 +50,14 @@ For the includes to work, a file called `configure.yml` would have to exist besi
 ```yaml
 - title: "configure_nginx"
   type: "builtin.template"
-  data:
+  parameters:
     name: "nginx.conf"
     path: "/etc/nginx/nginx.conf"
   register: "configure_nginx"
 
 - title: "reload_nginx"
   type: "builtin.systemd_service"
-  data:
+  parameters:
     name: "nginx.service"
     state: "reloaded"
   when: "configure_nginx == updated"
@@ -96,10 +100,8 @@ And then inside of the role you can use them like so.
 ```yaml
 - title: "configure_nginx"
   type: "builtin.template"
-  data:
+  parameters:
     name: "nginx.conf"
     path: "/etc/nginx/nginx.conf"
   register: "configure_nginx"
 ```
-
-You can find more informations about templates on the [`builtin.template` documentation](/resources/template)

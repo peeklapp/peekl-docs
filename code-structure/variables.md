@@ -1,11 +1,11 @@
 ---
 prev:
-  text: Inventory
-  link: /code-structure/inventory
+  text: 'Inventory'
+  link: '/code-structure/inventory'
 
 next:
-  text: Roles
-  link: /code-structure/roles
+  text: 'Roles'
+  link: '/code-structure/roles'
 ---
 
 # Variables

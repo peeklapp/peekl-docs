@@ -1,20 +1,16 @@
 ---
 prev:
-  text: Directory
-  link: resources/directory
+  text: 'User'
+  link: '/resources/user'
 
 next:
-  text: Pkg
-  link: resources/pkg
+  text: 'Inventory'
+  link: '/code-structure/inventory'
 ---
 
 # Template
 
 The `builtin.template` resource allows you to create file on node with dynamic content defined by variables that you set, or using facts.
-
-::: info
-Templates can only really be used within a role only, as this is the only place where we can define raw templates. This behavior might change in the future.
-:::
 
 ## Writing a template
 
@@ -32,7 +28,7 @@ daemon: {{ .daemon }}
 
 On top of variables that you can define in your roles, your inventory, and on direct task invocation, you will also be able to use builtin variables, such as **facts** and **tags**.
 
-## Resource parameters
+## Parameters
 
 | Name | Description | Required | Default |
 | ---- | ---- | ---- | ---- |
@@ -52,7 +48,7 @@ Create file `/etc/my_app/config` based on the template called `config`
 - title: "Create configuration for my_app"
   type: "builtin.template"
   present: true
-  data:
+  parameters:
     source: "config"
     path: "/etc/my_app/config"
     variables:
@@ -65,7 +61,7 @@ Create file dummy with a local content
 - title: "Create dummy file with content"
   type: "builtin.template"
   present: true
-  data:
+  parameters:
     path: "/root/dummy"
     content: |
       {{ .hello }}

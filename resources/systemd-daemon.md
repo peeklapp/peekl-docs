@@ -1,18 +1,18 @@
 ---
 prev:
-  text: Pkg
-  link: resources/pkg
+  text: 'Pkg'
+  link: '/resources/pkg'
 
 next:
-  text: Systemd Service
-  link: resources/systemd-service
+  text: 'Systemd Service'
+  link: '/resources/systemd-service'
 ---
 
 # Systemd Daemon
 
 The `builtin.systemd_daemon` resource allows you to easily reload the systemd daemon, when you modify or add a new `.service` unit file.
 
-## Resource parameters
+## Parameters
 
 | Name | Description | Required | Default |
 | ---- | ---- | ---- | ---- |
@@ -26,6 +26,6 @@ Relod systemd daemon
 - title: "Reload systemd daemon"
   type: "builtin.systemd_daemon"
   present: true
-  data:
+  parameters:
     reload: true
 ```

@@ -1,18 +1,18 @@
 ---
 prev:
-  text: builtin.systemd_service
-  link: resources/systemd-service
+  text: 'Cron'
+  link: '/resources/cron'
 
 next:
-  text: builtin.command
-  link: resources/command
+  text: Directory
+  link: '/resources/directory'
 ---
 
 # Debug
 
 The `builtin.debug` allows you to print debug messages during run of the agent.
 
-## Resource parameters
+## Parameters
 
 | Name | Description | Required | Default |
 | ---- | ---- | ---- | ---- |
@@ -20,21 +20,20 @@ The `builtin.debug` allows you to print debug messages during run of the agent.
 
 ## Examples
 
-Simply output 'Jeff'
+Simply output `Jeff`
 
 ```yaml
 - title: "Say 'Jeff'"
   type: "builtin.debug"
-  data:
+  parameters:
     message: "Jeff"
 ```
 
-Output all the facts
+Output all existing variables
 
 ```yaml
 - title: "Output all variables"
   type: "builtin.debug"
-  data:
+  parameters:
     username: "{{ . }}"
 ```
-

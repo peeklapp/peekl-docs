@@ -1,18 +1,18 @@
 ---
 prev:
-  text: File
-  link: resources/file
+  text: 'Debug'
+  link: '/resources/debug'
 
 next:
-  text: Template
-  link: resources/template
+  text: 'File'
+  link: '/resources/file'
 ---
 
 # Directory
 
 The `builtin.directory` resource allows you to manage a directory, either creating or deleting it, and setting permissions.
 
-## Resource parameters
+## Parameters
 
 | Name | Description | Required | Default |
 | ---- | ---- | ---- | ---- |
@@ -30,7 +30,7 @@ Create a directory at path `/tmp/my_directory`
 - title: "Create directory /tmp/my_directory"
   type: "builtin.directory"
   present: true
-  data:
+  parameters:
     path: "/tmp/my_directory"
 ```
 
@@ -40,7 +40,7 @@ Force deletion of a directory at path `/tmp/my_directory_to_delete`
 - title: "Force delete directory `/tmp/my_directory_to_delete`"
   type: "builtin.directory"
   present: false
-  data:
+  parameters:
     path: "/tmp/my_directory_to_delete"
     force_delete: true
 ```
